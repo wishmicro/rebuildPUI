@@ -45,10 +45,7 @@ void *loadxml::loadLayout(QString &filepath)
    file.close();
    //获取根节点
    QDomElement root=document.documentElement();
-
    QDomNode node=root.firstChild();
-   qDebug()<<node.nodeName();
-
    while(!node.isNull())
    {
        QDomElement e = node.toElement();

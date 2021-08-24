@@ -12,7 +12,6 @@ Load::~Load()
 //清除控件
 void Load::ReleaseWidgetInfo(WidgetInfoArray *pointerArray)
 {
-
     if(!pointerArray)
     {
         return;

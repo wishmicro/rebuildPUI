@@ -3,8 +3,9 @@
 BeginLayout::BeginLayout(QWidget *parent)
 {
     m_pointerWidget=new addwidget(parent);
-    ReadInifile();
     WriteInifile();
+    ReadInifile();
+
 }
 
 BeginLayout::~BeginLayout()
@@ -13,7 +14,6 @@ BeginLayout::~BeginLayout()
     {
         delete  m_pointerWidget;
     }
-
 }
 
 void BeginLayout::configtoshow(ConfigType type)
@@ -71,7 +71,7 @@ void BeginLayout::WriteInifile()
 
    QString xmlpath=QDir::currentPath()+"/puixml02.xml";
    QString jsonpath= QDir::currentPath()+"/puijson.json";
-   QString sqlitepath= QDir::currentPath()+"/data.db";
+   QString sqlitepath= QDir::currentPath()+"/data01.db";
 
    configWrite->setValue("/filepath/xmlpath",xmlpath);
    configWrite->setValue("/filepath/jsonpath",jsonpath);

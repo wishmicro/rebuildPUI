@@ -17,11 +17,10 @@ public:
     void configtoshow(ConfigType type);
 
 private:
-
-
-    //读取程序配置文件
+    //读取和写入程序配置文件
     void ReadInifile();
     void WriteInifile();
+
     //控件处理类
     addwidget *m_pointerWidget;
 

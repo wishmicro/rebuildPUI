@@ -13,7 +13,7 @@
 addwidget::addwidget(QWidget *parent)
 {
     m_parent = parent;
-    m_widgetArray = NULL;
+    m_widgetInfoArray = NULL;
 }
 
 addwidget::~addwidget()
@@ -28,7 +28,7 @@ void addwidget::addWidgets(WidgetInfoArray *WidgetArray)
         return;
     }
     deleteWidget();
-    m_widgetArray=WidgetArray;
+    m_widgetInfoArray=WidgetArray;
     for(int i=0;i<WidgetArray->size();i++)
     {
         WidgetInfo *sInfo=WidgetArray->at(i);
@@ -38,7 +38,8 @@ void addwidget::addWidgets(WidgetInfoArray *WidgetArray)
 
 void addwidget::addsingalWidgt(WidgetInfo *info)
 {
-    if(info==NULL){
+    if(info==NULL)
+    {
         return ;
     }
     //控件布局指针 用于创建对象
@@ -61,12 +62,12 @@ void addwidget::addsingalWidgt(WidgetInfo *info)
          return;
     }
     else if(info->type.compare("TYPE_SPQINBOX")==0)
-    {;
-        pointerWidget=new QSpinBox(m_parent);
-        pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
-        info->objpointer=pointerWidget;
-        pointerWidget->show();
-        return;
+    {
+         pointerWidget=new QSpinBox(m_parent);
+         pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
+         info->objpointer=pointerWidget;
+         pointerWidget->show();
+         return;
    }
     else if(info->type.compare("TYPE_QCOMBOBOX")==0)
     {
@@ -86,10 +87,10 @@ void addwidget::addsingalWidgt(WidgetInfo *info)
     }
     else if(info->type.compare("TYPE_RADIOBUTTON")==0
             ){
-        pointerWidget=new QRadioButton(info->name,m_parent);
-        pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
+         pointerWidget=new QRadioButton(info->name,m_parent);
+         pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
          info->objpointer=pointerWidget;
-        pointerWidget->show();
+         pointerWidget->show();
          return;
     }
     else if(info->type.compare("TYPE_QLINEEDIT")==0)
@@ -106,33 +107,30 @@ void addwidget::addsingalWidgt(WidgetInfo *info)
           pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
           info->objpointer=pointerWidget;
           pointerWidget->show();
-         return;
+          return;
     }
     else if(info->type.compare("TYPE_QTIMEEDIT")==0)
     {
-         pointerWidget=new QTimeEdit(m_parent);
-         pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
-         info->objpointer=pointerWidget;
-         pointerWidget->show();
-         return;
+          pointerWidget=new QTimeEdit(m_parent);
+          pointerWidget->setGeometry(info->posx,info->posy,info->width,info->heigth);
+          info->objpointer=pointerWidget;
+          pointerWidget->show();
+          return;
     }
-
-
 }
 
 void addwidget::deleteWidget()
 {
-    if(!m_widgetArray)
+    if(!m_widgetInfoArray)
     {
         return;
     }
     WidgetInfo *info=NULL;
-    for(int i=0;i<m_widgetArray->size();i++)
+    for(int i=0;i<m_widgetInfoArray->size();i++)
     {
-        info=m_widgetArray->at(i);
+        info=m_widgetInfoArray->at(i);
         if(info)
         {
-
             if(info->objpointer)
             {
                 delete info->objpointer;
@@ -140,6 +138,6 @@ void addwidget::deleteWidget()
             }
         }
     }
-    m_widgetArray=NULL;
+    m_widgetInfoArray=NULL;
 }
 

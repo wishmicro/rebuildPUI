@@ -36,13 +36,13 @@ MainWindow::~MainWindow()
 void MainWindow::Init()
 {
     //创建提示标签
-    m_label=new QLabel("请选择配置选项",this);
-    m_label->setGeometry(rect().right()-180, rect().y()+20, 70, 20);
+    m_label=new QLabel("select:",this);
+    m_label->setGeometry(rect().right()-140, rect().y()+5, 70, 20);
     m_label->show();
 
     //创建comboBox按钮
     m_comboBox=new QComboBox(this);
-    m_comboBox->setGeometry(rect().right()-100, rect().y()+20, 60, 20);
+    m_comboBox->setGeometry(rect().right()-80, rect().y()+5, 75, 20);
     //将选项插入comboBox中
     m_comboBox->insertItem(0,"xml");
     m_comboBox->insertItem(1,"json");

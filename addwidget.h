@@ -26,7 +26,7 @@ private:
     //父窗口指针
     QWidget *m_parent;
     //
-    WidgetInfoArray *m_widgetArray;
+    WidgetInfoArray *m_widgetInfoArray;
 
 
 };

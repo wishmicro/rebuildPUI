@@ -15,8 +15,7 @@ void *loadsqlite::loadLayout(QString &filepath)
     if(database.open())
     {
         QSqlQuery sql_query;
-        QString strselect="select *from puisqlite";
-        QString strselectparm="select *from paraminfo";
+        QString strselect="select *from newpui";
         sql_query.prepare(strselect);
         if(!sql_query.exec())
         {
