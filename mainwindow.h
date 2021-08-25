@@ -15,18 +15,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-    void Init();
 private:
     Ui::MainWindow *ui;
     //解析类
     BeginLayout *m_addlayout;
-    //主界面显示
-    QLabel *m_label;
-    QComboBox *m_comboBox;
-
 private slots:
     //comboBox
-    void selectChange(const QString & currentstr);
+    void OncurrentIndexChanged(int);
 };
 #endif // MAINWINDOW_H

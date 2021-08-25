@@ -23,13 +23,8 @@
 class loadjson :public Load
 {
 public:
-
     //加载解析文件
-    void * loadLayout(QString &filepath) override;
-
-
-   static WidgetInfoArray m_widgetInfoArray;
-
+    WidgetInfoArray * loadLayout(QString &filepath) override;
 
 };
 

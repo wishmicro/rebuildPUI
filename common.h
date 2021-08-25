@@ -10,7 +10,6 @@ enum ConfigType
     CONFIG_JSON,
     CONFIG_SQLITE
 };
-
 //控件结构体
 struct WidgetInfo{
    //控件初始化

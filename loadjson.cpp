@@ -2,15 +2,15 @@
 
 // QJsonArray 是[{}] 而object是{} 所以数组包含对象
 
-WidgetInfoArray loadjson::m_widgetInfoArray;
+WidgetInfoArray m_jsonwidgetInfoArray;
 
-void *loadjson::loadLayout(QString &filepath)
+WidgetInfoArray *loadjson::loadLayout(QString &filepath)
 {
    if(filepath.isEmpty())
    {
        return NULL;
    }
-    ReleaseWidgetInfo(&loadjson::m_widgetInfoArray);
+    ReleaseWidgetInfo(&m_jsonwidgetInfoArray);
 
     QFile file;
     file.setFileName(filepath);
@@ -22,46 +22,43 @@ void *loadjson::loadLayout(QString &filepath)
     //开始利用json数据类型读取
 
     QJsonParseError error;
-    QJsonDocument p_document=QJsonDocument::fromJson(file.readAll(),&error);
-    if(error.error!=QJsonParseError::NoError)
+    QJsonDocument p_document = QJsonDocument::fromJson(file.readAll(),&error);
+    if(error.error != QJsonParseError::NoError)
     {
         return NULL;
     }
-
-    if(error.error==QJsonParseError::NoError&&!(p_document.isNull()))
+    if(error.error == QJsonParseError::NoError&&!(p_document.isNull()))
     {
         if(p_document.isObject())
         {
-            QJsonObject jsonObject=p_document.object();
+            QJsonObject jsonObject = p_document.object();
             if(jsonObject.contains("widget")&&jsonObject.value("widget").isArray())
             {
-                QJsonArray jsonarray=jsonObject.value("widget").toArray();
+                QJsonArray jsonarray = jsonObject.value("widget").toArray();
                 for(int j=0;j<jsonarray.size();j++)
                 {
-                    WidgetInfo *info=new WidgetInfo;
-                    if(info==NULL)
+                    WidgetInfo *info = new WidgetInfo;
+                    if(info == NULL)
                     {
                         return NULL;
                     }
-
                     if(jsonarray[j].isObject())
                     {
+                        QJsonObject jsonObjectwidget = jsonarray[j].toObject();
 
-                        QJsonObject jsonObjectwidget=jsonarray[j].toObject();
+                        info->type = jsonObjectwidget.value("class").toString();
 
-                        info->type=jsonObjectwidget.value("class").toString();
+                        info->posx = jsonObjectwidget.value("x").toInt();
 
-                        info->posx=jsonObjectwidget.value("x").toInt();
+                        info->posy = jsonObjectwidget.value("y").toInt();
 
-                        info->posy=jsonObjectwidget.value("y").toInt();
-
-                        info->width=jsonObjectwidget.value("width").toInt();
+                        info->width = jsonObjectwidget.value("width").toInt();
 
                         info->heigth=jsonObjectwidget.value("heigth").toInt();
 
-                        info->name=jsonObjectwidget.value("name").toString();
+                        info->name = jsonObjectwidget.value("name").toString();
                     }
-                    loadjson::m_widgetInfoArray.push_back(info);
+                    m_jsonwidgetInfoArray.push_back(info);
                 }//遍历数组并载入
 
             }//判断数组是否是WIdget 并且它是数组
@@ -70,4 +67,5 @@ void *loadjson::loadLayout(QString &filepath)
 
      }//判断是否打开
     file.close();
+    return &m_jsonwidgetInfoArray;
 }

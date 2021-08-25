@@ -16,10 +16,7 @@
 class loadsqlite :public Load
 {
 public:
-
-    virtual void * loadLayout(QString &filepath) override;
-    static WidgetInfoArray m_widgetInfoArray;
-
+    virtual WidgetInfoArray * loadLayout(QString &filepath) override;
 };
 
 #endif // LOADSQLITE_H

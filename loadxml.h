@@ -15,11 +15,8 @@
 class loadxml :public Load
 {
 public:
-
     //加载配置文件
-    void * loadLayout(QString &filepath) override;
-    //控件承载对象
-    static WidgetInfoArray m_widgetArray;
+    WidgetInfoArray * loadLayout(QString &filepath) override;
 
 };
 
