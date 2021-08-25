@@ -3,16 +3,16 @@
 #include "common.h"
 #include "load.h"
 
-#include<QSettings>
-#include<QTextCodec>
-#include<QApplication>
-#include<QDebug>
-#include<QMessageBox>
-#include<QFile>
-#include<QIODevice>
-#include<QSqlDatabase>
-#include<QSqlQuery>
-#include<QDir>
+#include <QSettings>
+#include <QTextCodec>
+#include <QApplication>
+#include <QDebug>
+#include <QMessageBox>
+#include <QFile>
+#include <QIODevice>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDir>
 class loadsqlite :public Load
 {
 public:

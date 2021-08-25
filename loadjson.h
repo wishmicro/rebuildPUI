@@ -3,21 +3,20 @@
 #include "common.h"
 #include "load.h"
 
-#include<QSettings>
-#include<QTextCodec>
-#include<QApplication>
-#include<QDebug>
-#include<QMessageBox>
-#include<QMessageBox>
-#include<QFile>
-#include<QIODevice>
-#include<QJsonDocument>
-#include<QJsonArray>
-#include<QDebug>
-#include<QJsonParseError>
-#include<QJsonObject>
-
-#include<QDir>
+#include <QSettings>
+#include <QTextCodec>
+#include <QApplication>
+#include <QDebug>
+#include <QMessageBox>
+#include <QMessageBox>
+#include <QFile>
+#include <QIODevice>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QDebug>
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QDir>
 
 
 class loadjson :public Load

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "beginlayout.h"
+#include "Parse.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,7 +18,7 @@ public:
 private:
     Ui::MainWindow *ui;
     //解析类
-    BeginLayout *m_addlayout;
+    Parse *m_parse;
 private slots:
     //comboBox
     void OncurrentIndexChanged(int);

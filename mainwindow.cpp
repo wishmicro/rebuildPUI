@@ -9,11 +9,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    m_addlayout = new BeginLayout(this);
+    m_parse = new Parse(this);
     //根据comboBox点击选择不同的功能
     connect(ui->comboBoxselect, SIGNAL(currentIndexChanged(int)), this, SLOT(OncurrentIndexChanged(int)));
     //默认xml配置
-    m_addlayout->configtoshow(CONFIG_XML);
+    m_parse->loadEntry(CONFIG_XML);
  }
 MainWindow::~MainWindow()
 {
@@ -23,5 +23,5 @@ MainWindow::~MainWindow()
 void MainWindow::OncurrentIndexChanged(int index)
 {
    ConfigType type = (ConfigType)(index+1);
-   m_addlayout->configtoshow(type);
+   m_parse->loadEntry(type);
 }

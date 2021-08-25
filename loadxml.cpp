@@ -1,3 +1,20 @@
+/*
+ * *************************************************************************************
+    模块名：xml文件加载类
+    类 名： loadxml
+    功 能：加载xml类型的界面布局文件路径，获取控件信息
+
+    函数名：重写虚函数：loadLayout
+      功   能：加载界面文件获控件信息
+      输入参数：路径 QString &filepath
+      返回参数：控件信息数组 WidgetInfoArray
+
+    函数名：清除控件息  ReleaseWidgetInfo()
+      功    能：将原有的控件信息数组清空
+      输入参数： WidgetInfoArray
+      返回参数：无
+ * *************************************************************************************
+*/
 #include "loadxml.h"
 #include <QDebug>
 #include <QMessageBox>
@@ -7,9 +24,7 @@
 class="MainWindow"> class="QLabel"> class="QPushButton">  class="QRadioButton"> class="QCheckBox">
 class="QComboBox"  class="QLineEdit"  class="QSpinBox"  class="QTimeEdit"  class="QDateEdit"
  在这些节点中 主要有以下属性 name  rect 其中rect还包括 x y heigth width*/
-
-
-WidgetInfoArray m_xmlwidgetArray;
+WidgetInfoArray m_xmlwidgeInfotArray;
 
 WidgetInfoArray *loadxml::loadLayout(QString &filepath)
 {
@@ -19,7 +34,7 @@ WidgetInfoArray *loadxml::loadLayout(QString &filepath)
        return NULL;
    }
     //清除部件
-   ReleaseWidgetInfo(&m_xmlwidgetArray);
+   ReleaseWidgetInfo(&m_xmlwidgeInfotArray);
 
    QFile file(filepath);
    if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
@@ -70,8 +85,8 @@ WidgetInfoArray *loadxml::loadLayout(QString &filepath)
 
              info->name = childele.attributeNode("name").value();
          }
-        m_xmlwidgetArray.push_back(info);
+        m_xmlwidgeInfotArray.push_back(info);
         node = node.nextSibling();
    }
-   return &m_xmlwidgetArray;
+   return &m_xmlwidgeInfotArray;
 }

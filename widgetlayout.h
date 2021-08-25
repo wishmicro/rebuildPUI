@@ -11,16 +11,16 @@
 #include <QLineEdit>
 #include <QWidget>
 #include "common.h"
-class addwidget
+class widgetlayout
 {
 public:
-    addwidget(QWidget *parent=0);
-    ~addwidget();
+    widgetlayout(QWidget *parent=0);
+    ~widgetlayout();
     //添加控件信息
-    void addWidgets(WidgetInfoArray *WidgetArray);
+    void multicontrolLayout(WidgetInfoArray *WidgetArray);
 
 private:
-    void addsingalWidgt(WidgetInfo *info);
+    void singacontrolLayout(WidgetInfo *info);
 
     void deleteWidget();
     //父窗口指针
